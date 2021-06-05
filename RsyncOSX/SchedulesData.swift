@@ -36,7 +36,7 @@ final class SchedulesData {
                 }
             }
             // Sorting schedule after hiddenID
-            self.schedules?.sort { (schedule1, schedule2) -> Bool in
+            self.schedules?.sort { schedule1, schedule2 -> Bool in
                 if schedule1.hiddenID > schedule2.hiddenID {
                     return false
                 } else {
@@ -61,7 +61,7 @@ final class SchedulesData {
                 }
             }
             // Sorting schedule after hiddenID
-            self.schedules?.sort { (schedule1, schedule2) -> Bool in
+            self.schedules?.sort { schedule1, schedule2 -> Bool in
                 if schedule1.hiddenID > schedule2.hiddenID {
                     return false
                 } else {

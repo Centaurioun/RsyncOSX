@@ -50,7 +50,7 @@ final class ScheduleLoggData: SetConfigurations, SetSchedules {
 
     func filter(search: String?) {
         globalDefaultQueue.async { () -> Void in
-            self.loggrecords = self.loggrecords?.filter { ($0.dateExecuted.contains(search ?? "")) }
+            self.loggrecords = self.loggrecords?.filter { $0.dateExecuted.contains(search ?? "") }
         }
     }
 

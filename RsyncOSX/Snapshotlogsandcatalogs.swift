@@ -113,7 +113,7 @@ final class Snapshotlogsandcatalogs {
                 }
             }
         }
-        self.logrecordssnapshot = adjustedlogrecords.sorted { (cat1, cat2) -> Bool in
+        self.logrecordssnapshot = adjustedlogrecords.sorted { cat1, cat2 -> Bool in
             if let cat1 = cat1.snapshotCatalog,
                let cat2 = cat2.snapshotCatalog
             {
@@ -176,7 +176,7 @@ final class Snapshotlogsandcatalogs {
 
     func validatedelete() -> Bool {
         guard (self.snapshotcatalogstodelete?.count ?? 0) > 0 else { return false }
-        let selectedrecords = self.logrecordssnapshot?.filter { ($0.selectCellID == 1) }
+        let selectedrecords = self.logrecordssnapshot?.filter { $0.selectCellID == 1 }
         guard selectedrecords?.count == self.snapshotcatalogstodelete?.count else { return false }
         // for i in 0 ..< (self.snapshotcatalogstodelete?.count ?? 0) {}
         return true

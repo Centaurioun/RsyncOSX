@@ -22,7 +22,7 @@ final class QuickBackup: SetConfigurations {
 
     func sortbydays() {
         guard self.sortedlist != nil else { return }
-        self.sortedlist = self.sortedlist?.sorted { (di1, di2) -> Bool in
+        self.sortedlist = self.sortedlist?.sorted { di1, di2 -> Bool in
             if let di1 = (di1.value(forKey: DictionaryStrings.daysID.rawValue) as? NSString)?.doubleValue,
                let di2 = (di2.value(forKey: DictionaryStrings.daysID.rawValue) as? NSString)?.doubleValue
             {
@@ -53,7 +53,7 @@ final class QuickBackup: SetConfigurations {
     }
 
     private func prepareandstartexecutetasks() {
-        if let list = self.sortedlist?.filter({ ($0.value(forKey: DictionaryStrings.select.rawValue) as? Int == 1) }) {
+        if let list = self.sortedlist?.filter({ $0.value(forKey: DictionaryStrings.select.rawValue) as? Int == 1 }) {
             // adjust selected tasks if any adjustmenst
             if list.count != self.sortedlist?.count {
                 self.sortedlist = list

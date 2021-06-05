@@ -20,7 +20,7 @@ final class ExecuteQuickbackupTask: SetSchedules, SetConfigurations {
             if let hiddenID: Int = dict.value(forKey: DictionaryStrings.hiddenID.rawValue) as? Int {
                 let getconfigurations: [Configuration]? = configurations?.getConfigurations()
                 guard getconfigurations != nil else { return }
-                let configArray = getconfigurations!.filter { ($0.hiddenID == hiddenID) }
+                let configArray = getconfigurations!.filter { $0.hiddenID == hiddenID }
                 guard configArray.count > 0 else { return }
                 self.config = configArray[0]
                 if hiddenID >= 0, self.config != nil {

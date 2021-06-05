@@ -27,8 +27,8 @@ final class Running {
         // Get all running applications
         let workspace = NSWorkspace.shared
         let applications = workspace.runningApplications
-        let rsyncosx = applications.filter { ($0.bundleIdentifier == self.rsyncOSX) }
-        let rsyncosxschde = applications.filter { ($0.bundleIdentifier == self.rsyncOSXsched) }
+        let rsyncosx = applications.filter { $0.bundleIdentifier == self.rsyncOSX }
+        let rsyncosxschde = applications.filter { $0.bundleIdentifier == self.rsyncOSXsched }
         if rsyncosx.count > 0 {
             self.rsyncOSXisrunning = true
         } else {

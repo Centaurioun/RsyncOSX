@@ -32,7 +32,7 @@ class Configurations: ReloadTable, SetSchedules {
         // Reading Configurations from memory
         if let configurations = self.configurations {
             if configurations.count > 0 {
-                _ = configurations.sorted { (config1, config2) -> Bool in
+                _ = configurations.sorted { config1, config2 -> Bool in
                     if config1.hiddenID > config2.hiddenID {
                         return true
                     } else {
@@ -154,7 +154,7 @@ class Configurations: ReloadTable, SetSchedules {
     }
 
     func getResourceConfiguration(_ hiddenID: Int, resource: ResourceInConfiguration) -> String? {
-        if let result = self.configurations?.filter({ ($0.hiddenID == hiddenID) }) {
+        if let result = self.configurations?.filter({ $0.hiddenID == hiddenID }) {
             guard result.count > 0 else { return nil }
             switch resource {
             case .localCatalog:

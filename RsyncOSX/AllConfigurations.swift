@@ -14,7 +14,7 @@ final class AllConfigurations {
 
     func filter(search: String?) {
         globalDefaultQueue.async { () -> Void in
-            self.allconfigurations = self.allconfigurations?.filter { ($0.dateRun!.contains(search ?? "")) }
+            self.allconfigurations = self.allconfigurations?.filter { $0.dateRun!.contains(search ?? "") }
         }
     }
 

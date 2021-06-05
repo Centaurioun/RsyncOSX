@@ -18,7 +18,7 @@ class ScheduleWriteLoggData: SetConfigurations, ReloadTable, Deselect {
     func deleteselectedrows(scheduleloggdata: ScheduleLoggData?) {
         guard scheduleloggdata?.loggrecords != nil else { return }
         var deletes = [Row]()
-        let selectdeletes = scheduleloggdata?.loggrecords?.filter { $0.delete == 1 }.sorted { (dict1, dict2) -> Bool in
+        let selectdeletes = scheduleloggdata?.loggrecords?.filter { $0.delete == 1 }.sorted { dict1, dict2 -> Bool in
             if dict1.parent > dict2.parent {
                 return true
             } else {
@@ -30,7 +30,7 @@ class ScheduleWriteLoggData: SetConfigurations, ReloadTable, Deselect {
             let sibling = selectdeletes?[i].sibling ?? 0
             deletes.append((parent, sibling))
         }
-        deletes.sort(by: { (obj1, obj2) -> Bool in
+        deletes.sort(by: { obj1, obj2 -> Bool in
             if obj1.0 == obj2.0, obj1.1 > obj2.1 {
                 return obj1 > obj2
             }

@@ -93,7 +93,7 @@ class Schedules: ScheduleWriteLoggData {
                 data.append(row)
             }
             // Sorting schedule after dateStart, last startdate on top
-            data.sort { (sched1, sched2) -> Bool in
+            data.sort { sched1, sched2 -> Bool in
                 if let date1 = (sched1.value(forKey: DictionaryStrings.dateStart.rawValue) as? String)?.en_us_date_from_string(),
                    let date2 = (sched2.value(forKey: DictionaryStrings.dateStart.rawValue) as? String)?.en_us_date_from_string()
                 {
@@ -110,7 +110,7 @@ class Schedules: ScheduleWriteLoggData {
     func deleteandstopschedules(data: [NSMutableDictionary]?) {
         var update: Bool = false
         if (data?.count ?? 0) > 0 {
-            if let stop = data?.filter({ (($0.value(forKey: DictionaryStrings.stopCellID.rawValue) as? Int) == 1) }) {
+            if let stop = data?.filter({ ($0.value(forKey: DictionaryStrings.stopCellID.rawValue) as? Int) == 1 }) {
                 // Stop Schedules
                 if stop.count > 0 {
                     update = true
@@ -119,7 +119,7 @@ class Schedules: ScheduleWriteLoggData {
                     }
                 }
             }
-            if let delete = data?.filter({ (($0.value(forKey: DictionaryStrings.deleteCellID.rawValue) as? Int) == 1) }) {
+            if let delete = data?.filter({ ($0.value(forKey: DictionaryStrings.deleteCellID.rawValue) as? Int) == 1 }) {
                 if delete.count > 0 {
                     update = true
                     for i in 0 ..< delete.count {

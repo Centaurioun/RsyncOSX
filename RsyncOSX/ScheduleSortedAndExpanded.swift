@@ -107,7 +107,7 @@ class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
                     break
                 }
             }
-            self.sortedschedules = self.expandedData?.sorted { (date1, date2) -> Bool in
+            self.sortedschedules = self.expandedData?.sorted { date1, date2 -> Bool in
                 if let date1 = date1.value(forKey: DictionaryStrings.start.rawValue) as? Date {
                     if let date2 = date2.value(forKey: DictionaryStrings.start.rawValue) as? Date {
                         if date1.timeIntervalSince(date2) > 0 {
@@ -147,7 +147,7 @@ class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
 
     // Calculates number of future Schedules ID by hiddenID
     func numberoftasks(_ hiddenID: Int) -> Futureschedules {
-        if let result = self.sortedschedules?.filter({ (($0.value(forKey: DictionaryStrings.hiddenID.rawValue) as? Int) == hiddenID) }) {
+        if let result = self.sortedschedules?.filter({ ($0.value(forKey: DictionaryStrings.hiddenID.rawValue) as? Int) == hiddenID }) {
             guard result.count > 0 else { return (0, 0) }
             let timetostart = result[0].value(forKey: DictionaryStrings.timetostart.rawValue) as? Double ?? 0
             return (result.count, timetostart)
@@ -163,11 +163,12 @@ class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
                 && ($0.value(forKey: DictionaryStrings.profilename.rawValue) as? String) == profilename ?? ""
             }
         } else {
-            result = self.sortedschedules?.filter { (($0.value(forKey: DictionaryStrings.hiddenID.rawValue) as? Int) == hiddenID
-                    && ($0.value(forKey: DictionaryStrings.start.rawValue) as? Date)?.timeIntervalSinceNow ?? -1 > 0) }
+            result = self.sortedschedules?.filter { ($0.value(forKey: DictionaryStrings.hiddenID.rawValue) as? Int) == hiddenID
+                && ($0.value(forKey: DictionaryStrings.start.rawValue) as? Date)?.timeIntervalSinceNow ?? -1 > 0
+            }
         }
         guard result != nil else { return "" }
-        let sorted = result?.sorted { (di1, di2) -> Bool in
+        let sorted = result?.sorted { di1, di2 -> Bool in
             if let d1 = di1.value(forKey: DictionaryStrings.start.rawValue) as? Date, let d2 = di2.value(forKey: DictionaryStrings.start.rawValue) as? Date {
                 if d1.timeIntervalSince(d2) > 0 {
                     return false
